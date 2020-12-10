@@ -1,6 +1,6 @@
-require "activerepository/version"
+require "active_repository/version"
 
-module Activerepository
+module ActiveRepository
   class Error < StandardError; end
   # Your code goes here...
 end
