@@ -1,5 +1,5 @@
 require "bundler/setup"
-require "activerepository"
+require "active_repository"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
