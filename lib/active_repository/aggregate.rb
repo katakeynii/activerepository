@@ -1,5 +1,5 @@
 require "active_support"
-require "active_support/rails"
+# require "activesupport/rails"
 
 module ActiveRepository
     module Aggregate

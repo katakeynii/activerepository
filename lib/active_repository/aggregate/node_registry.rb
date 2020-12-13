@@ -9,7 +9,7 @@ module ActiveRepository
         end
     
         def register(name, target_klass)
-            node = Item.new(name: name , klass: target_klass )
+            node = Item.new(name , target_klass )
             registrations << node
         end
 
@@ -25,7 +25,8 @@ module ActiveRepository
         attr_reader :name, :klass 
         def initialize(name, klass)
           @name = name
-          @klass = Object.const_get(klass)
+          # @klass = Object.const_get(klass)
+          @klass = klass
         end
         def method_missing(method_name, *args, &block)
           @klass.send(method_name, *args, &block)
