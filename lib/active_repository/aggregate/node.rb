@@ -8,6 +8,7 @@ module ActiveRepository
                 def all
                     @registry.registrations
                 end
+                
                 def register(name, target_klass)
                   @registry.register(name, target_klass)
                 end
@@ -15,6 +16,8 @@ module ActiveRepository
                 def find(node_name) # :nodoc:
                   @registry.find(node_name)
                 end
+
+
             end
         end
     end

@@ -11,14 +11,19 @@ module ActiveRepository
         def register(name, target_klass)
             node = Item.new(name , target_klass )
             registrations << node
+
             node
         end
 
         def find(node_name)
-            registration = registration.find {|r| r.name === node_name}
-            raise ArgumentError, "We dont know this node !" if registration.nil?
+            node = registrations.find {|r| r.name === node_name.to_sym}
+            # raise ArgumentError, "We dont know this node !" if registration.nil?
+            false if registration.nil?
         end
-
+        def method_missing m, *args, &block
+          node = registrations.find {|r| r.name === m.to_sym}
+          node.klass
+        end
         private
       end
 

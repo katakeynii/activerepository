@@ -10,7 +10,7 @@ describe ActiveRepository::Aggregate do
   describe "When adding new Repository" do
 
     it "must contain at least node" do
-      _(BlogRepository.nodes.empty?).must_equal false 
+      _(BlogRepository.nodes.registrations.empty?).must_equal false 
     end
 
     it "must have a nodes method" do 
@@ -24,6 +24,11 @@ describe ActiveRepository::Aggregate do
     it "should return node item on node method" do 
       _(BlogRepository.respond_to?(:node)).must_equal true
       assert_instance_of ActiveRepository::Aggregate::Item, BlogRepository.node(:alpha, "Blog::Comment")
+    end
+
+    it "should return node model instance" do 
+      assert_equal "Blog::Post", BlogRepository.nodes.post.to_s
+      # BlogRepository.post 
     end
 
   end

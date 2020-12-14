@@ -13,7 +13,7 @@ module ActiveRepository
         end
         module ClassMethods
             def nodes
-                Aggregate::Node.all
+                Aggregate::Node.registry
             end
             def aggregate &block
                 block.call if block_given?
