@@ -2,12 +2,11 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 # Specify your gem's dependencies in activerepository.gemspec
-gemspec
 
-gem "rails", "~> 6.0.0"
-gem "omniauth"
-gem "omniauth-oauth2"
+gem "rails", "~> 6.1.0"
+
 gem "rdoc"
+gemspec
 
 gem "responders", "~> 3.0"
 
