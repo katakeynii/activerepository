@@ -3,14 +3,13 @@ require "minitest/autorun"
 
 class NodeTest < ActiveSupport::TestCase
 
-    test "Responds to basic nodes methods" do 
-        assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:registry)
-        assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:find)
-        assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:register)
-        assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:all)
-    end
-
     describe "Node Behaviors" do 
+        it "should respond to basic methods " do 
+            assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:registry)
+            assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:find)
+            assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:register)
+            assert_equal true, ActiveRepository::Aggregate::Node.respond_to?(:all)
+        end
         it "should add and return a node item" do 
             item = ActiveRepository::Aggregate::Node.register(:article, 'Blog::Post' )
             assert_instance_of ActiveRepository::Aggregate::Item, item

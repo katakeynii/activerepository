@@ -1,14 +1,8 @@
 require 'minitest/autorun'  # the test runner
 require 'minitest/pride' 
 require 'minitest/spec'
-# require 'minitest/autorun'
-require 'script'
-
-require 'rails/test_help'
-require "minitest/reporters"
-Minitest::Reporters.use!
-
-require "rails_app/config/environment"
+require "rails"
+ENV['RAILS_ENV'] ||= 'test'
 require "rails/test_help"
 
 
@@ -21,9 +15,5 @@ module TestSetup
     end
 end
 class ActiveSupport::TestCase
-    include TestSetup
-end
-
-class Minitest::Test
     include TestSetup
 end

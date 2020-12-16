@@ -1,5 +1,6 @@
 require 'repositories/blog_repository'
 require "minitest/autorun"
+require 'test_helper'
 
 describe ActiveRepository::Aggregate do
   before do
@@ -30,6 +31,9 @@ describe ActiveRepository::Aggregate do
       assert_equal "Blog::Post", BlogRepository.nodes.post.to_s
     end
     
+    # it "should return number of posts" do 
+    #   assert_equal 2, Post.count
+    # end
 
   end
 end

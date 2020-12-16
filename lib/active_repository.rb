@@ -1,4 +1,5 @@
 # require 'rails'
+$:.push File.expand_path("../lib", __FILE__)
 require 'active_support/core_ext/numeric/time'
 require 'active_support/dependencies'
 require "active_repository/version"
@@ -19,5 +20,5 @@ module ActiveRepository
 
   include ActiveRepository::Aggregate
   # include ActiveRepository::Aggregate::Node
-  # include ActiveRepository::Aggregate::NodeRegistry
+  # include ActiveRepository::Aggregate::NodexiteRegistry
 end
