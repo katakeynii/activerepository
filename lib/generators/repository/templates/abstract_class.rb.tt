@@ -1,0 +1,5 @@
+<% module_namespacing do -%>
+class <%= abstract_class_name %> < ActiveRepository::Base
+
+end
+<% end -%>
