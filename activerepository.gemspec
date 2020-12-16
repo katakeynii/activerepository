@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.description   = "Adding repository pattern to above rails active record implementation"
   spec.homepage      = "https://github.com/katakeynii/activerepository"
   spec.license       = "MIT"
-
+  spec.platform      = Gem::Platform::RUBY
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
   if spec.respond_to?(:metadata)
