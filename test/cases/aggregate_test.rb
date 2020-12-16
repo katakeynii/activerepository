@@ -35,6 +35,11 @@ class AggregateTest < ActiveSupport::TestCase
         assert_equal "Blog::Post", BlogRepository.nodes.post.to_s
       end
       
+      it "should return number of posts" do 
+        # assert_equal 2, posts(:welcome)
+        # puts Blog::Post.first
+        # puts posts
+      end
 
     end
   end
