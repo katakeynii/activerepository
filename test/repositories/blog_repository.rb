@@ -5,9 +5,11 @@ require "active_repository"
 class BlogRepository < ActiveRepository::Base
 
     aggregate do 
-        node :author, "Blog::Author"
+        node :user, "Blog::User"
         node :post,   "Blog::Post"
-
     end
     
+    def find_first
+        self.class.nodes.post.find(1)
+    end
 end
