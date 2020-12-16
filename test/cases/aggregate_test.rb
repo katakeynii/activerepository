@@ -2,6 +2,7 @@ require 'repositories/blog_repository'
 require "minitest/autorun"
 
 describe ActiveRepository::Aggregate do
+
   before do
     @repo = BlogRepository.new
     @number = 5
@@ -21,17 +22,21 @@ describe ActiveRepository::Aggregate do
       _(BlogRepository.respond_to?(:aggregate)).must_equal true
     end
 
-    it "should return node item on node method" do 
+    it "should add & return node item on node method" do 
       _(BlogRepository.respond_to?(:node)).must_equal true
       assert_instance_of ActiveRepository::Aggregate::Item, BlogRepository.node(:alpha, "Blog::Comment")
     end
 
     it "should return node model instance" do 
       assert_equal "Blog::Post", BlogRepository.nodes.post.to_s
-      # BlogRepository.post 
     end
+    
+    # it "must reutun an instane of a post" do 
+    #   assert_instance_of Blog::Post, posts(:welcome)
+    # end
 
   end
 end
+
 
   

@@ -16,13 +16,13 @@ module ActiveRepository
         end
 
         def find(node_name)
-            node = registrations.find {|r| r.name === node_name.to_sym}
-            # raise ArgumentError, "We dont know this node !" if registration.nil?
-            false if registration.nil?
+          item = @registrations.find {|r| r.name === node_name.to_sym}
+          item.nil? ? nil : item
         end
+
         def method_missing m, *args, &block
-          node = registrations.find {|r| r.name === m.to_sym}
-          node.klass
+          node = @registrations.find {|r| r.name === m.to_sym}
+          node.nil? ? nil : node.klass
         end
         private
       end
