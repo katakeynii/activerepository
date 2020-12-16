@@ -2,7 +2,6 @@ require 'repositories/blog_repository'
 require "minitest/autorun"
 
 describe ActiveRepository::Aggregate do
-
   before do
     @repo = BlogRepository.new
     @number = 5
@@ -31,9 +30,6 @@ describe ActiveRepository::Aggregate do
       assert_equal "Blog::Post", BlogRepository.nodes.post.to_s
     end
     
-    # it "must reutun an instane of a post" do 
-    #   assert_instance_of Blog::Post, posts(:welcome)
-    # end
 
   end
 end
