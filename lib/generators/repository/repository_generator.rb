@@ -3,36 +3,35 @@
 require 'rails/generators/named_base'
 require "rails/generators/active_record"
 
-  module Generators
-    class RepositoryGenerator < Rails::Generators::NamedBase
-      include Rails::Generators::ResourceHelpers
-      argument :nodes, type: :array, default: [], banner: "node_name[:type] node_name[:type]"
-      # creates the migration file for the model.
+class RepositoryGenerator < Rails::Generators::NamedBase
+    include Rails::Generators::ResourceHelpers
+    source_root File.expand_path('templates', __dir__)
+    # argument :nodes, type: :array, default: [], banner: "node_name[:type] node_name[:type]"
+    # creates the migration file for the model.
 
-      def create_repository_file
-        generate_abstract_class if database && !parent
-		@module_name = options[:module]
+    def create_repository_file
+    generate_abstract_class if database && !parent
+    @module_name = options[:module]
 
-		service_dir_path = "app/repositories"
-		generator_dir_path = service_dir_path + ("/#{@module_name.underscore}" if @module_name.present?).to_s
-        generator_path = generator_dir_path + "/#{file_name}_repository.rb"
+    service_dir_path = "app/repositories"
+    generator_dir_path = service_dir_path + ("/#{@module_name.underscore}" if @module_name.present?).to_s
+    generator_path = generator_dir_path + "/#{file_name}_repository.rb"
 
-		Dir.mkdir(service_dir_path) unless File.exist?(service_dir_path)
-		Dir.mkdir(generator_dir_path) unless File.exist?(generator_dir_path)
-        
-        template "repository.rb", File.join("app/repositories", class_path, "#{file_name}_repository.rb")
-      end
-
-
-      private 
-
-      def generate_abstract_class
-        path = File.join("app/repositories", "application_repository.rb")
-        return if File.exist?(path)
-
-        template "abstract_class.rb", path
-      end      
-
-
+    Dir.mkdir(service_dir_path) unless File.exist?(service_dir_path)
+    Dir.mkdir(generator_dir_path) unless File.exist?(generator_dir_path)
+    
+    template "repository.rb", File.join("app/repositories", class_path, "#{file_name}_repository.rb")
     end
-  end
+
+
+    private 
+
+    def generate_abstract_class
+    path = File.join("app/repositories", "application_repository.rb")
+    return if File.exist?(path)
+
+    template "abstract_class.rb", path
+    end      
+
+
+end
