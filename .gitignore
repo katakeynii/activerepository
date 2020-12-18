@@ -14,3 +14,4 @@ Gemfile.lock
 /gems
 /specifications
 /cache
+test/rails_app/log
