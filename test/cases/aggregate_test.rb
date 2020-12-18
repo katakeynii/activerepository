@@ -1,4 +1,5 @@
 require 'repositories/blog_repository'
+require 'repositories/group_repository'
 require "minitest/autorun"
 require 'models/blog/post'
 require 'test_helper'
@@ -9,6 +10,7 @@ class AggregateTest < ActiveSupport::TestCase
 
     before do
       @repo = BlogRepository.new
+      @group_repo = GroupRepository.new
       @number = 5
     end
 
@@ -34,7 +36,9 @@ class AggregateTest < ActiveSupport::TestCase
       it "should return node model instance" do 
         assert_equal "Blog::Post", BlogRepository.nodes.post.to_s
       end
-      
+      it "should load node from other repo" do 
+        refute_equal "Blog::Post", GroupRepository.nodes.post.to_s
+      end
       it "should return number of posts" do 
         # assert_equal 2, posts(:welcome)
         # puts Blog::Post.first
