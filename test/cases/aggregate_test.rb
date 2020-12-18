@@ -17,6 +17,8 @@ class AggregateTest < ActiveSupport::TestCase
     describe "When adding new Repository" do
 
       it "must contain at least node" do
+        puts ' - ' * 30
+        puts  BlogRepository.nodes.inspect
         _(BlogRepository.nodes.registrations.empty?).must_equal false 
       end
 
