@@ -1,11 +1,12 @@
-require "active_support"
 module ActiveRepository
-    module Aggregate
-        class Nodes 
+    module Aggregate 
+        class Nodes
             attr_accessor :registry
+            
             def initialize()
                 @registry = NodeRegistry.new
             end
+
             def all
                 @registry.registrations
             end

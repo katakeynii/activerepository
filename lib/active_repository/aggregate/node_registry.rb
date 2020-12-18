@@ -1,5 +1,4 @@
 module ActiveRepository
-
     module Aggregate
       class NodeRegistry
         attr_reader :registrations

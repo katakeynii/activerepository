@@ -5,22 +5,18 @@ module ActiveRepository
     module Aggregate
 
         extend ActiveSupport::Concern
-        autoload :Node, 'node'
-        included do
-            # class_attribute :attribute_types
-            # self.attribute_types = Hash.new(Type.default_value)
- 
-        end
+        @@nodes = Aggregate::Nodes.new
+
         module ClassMethods
-            @@node = ActiveRepository::Aggregate::Nodes.new
+
             def nodes
-                @@node.registry
+                # @@nodes.registry
             end
             def aggregate &block
                 block.call if block_given?
             end
             def node name, target
-                @@node.register(name, target)
+                # @@nodes.register(name, target)
             end
         end
 
