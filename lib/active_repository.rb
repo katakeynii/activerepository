@@ -10,8 +10,8 @@ module ActiveRepository
   autoload :Aggregate, "active_repository/aggregate"
   autoload :Base , "active_repository/base"
   module Aggregate
-    autoload :Node,        'active_repository/aggregate/node'
-    autoload :NodeRegistry,        'active_repository/aggregate/node_registry'
+    autoload :Nodes,           'active_repository/aggregate/nodes'
+    autoload :NodeRegistry,    'active_repository/aggregate/node_registry'
   end
 
   class Error < StandardError; end
@@ -19,6 +19,5 @@ module ActiveRepository
 
 
   include ActiveRepository::Aggregate
-  # include ActiveRepository::Aggregate::Node
-  # include ActiveRepository::Aggregate::NodexiteRegistry
+
 end
