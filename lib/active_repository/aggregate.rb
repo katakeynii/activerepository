@@ -12,14 +12,15 @@ module ActiveRepository
  
         end
         module ClassMethods
+            @@node = ActiveRepository::Aggregate::Nodes.new
             def nodes
-                Aggregate::Node.registry
+                @@node.registry
             end
             def aggregate &block
                 block.call if block_given?
             end
             def node name, target
-                Aggregate::Node.register(name, target)
+                @@node.register(name, target)
             end
         end
 
