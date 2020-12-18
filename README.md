@@ -22,8 +22,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Actually I'm working the Rails generator so that you cant generate repositories same as you generate your models.
+But still you can create a directory `app/repositories` and put it all your futur repositories. Here we are going to create two repositories a Group Repository and a Blog Repository. A repository inherit from the ActiveRepository::Base class
+```ruby
+# app/repositories/blog_repository.rb 
+class BlogRepository < ActiveRepository::Base
 
+    aggregate do 
+        node :user, "Blog::User"
+        node :post,   "Blog::Post"
+    end
+    
+end
+```
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
