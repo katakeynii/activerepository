@@ -1,24 +1,28 @@
-# Activerepository
+# Active Repository
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/activerepository`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome !! 
+This gem aim is to add repository patter over rails activerecord implementation. Our objectives are not create a replacement for rails ORM activerecord
+## You might ask why ? 
+Well! Lately working on a large projet with a large code base. And we finally ended with enormous models where we have associations, validations and *queries* than break the Single Responsibility Principle (SRP) . And then comes to mind why not put queries in seperate class ? How would we call thoses classes : Where comes to mind the Repository Pattern. 
 
-TODO: Delete this and the text above, and describe your gem
+From his book Martin Fowler defines a repository as a class that: *Mediates between the domain and data mapping layers using a collection-like interface for accessing domain objects* [Repository M. Fowler](https://martinfowler.com/eaaCatalog/repository.html). That means repositories encapsulates logic to have access data in his responsibility. 
+
+We define a repository as data access class from aggregated nodes or models. 
+
+In this, each repository has a cluster of rails models called nodes (Nodes are nothing else than Models). 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'activerepository'
+gem 'active_repository', :git => 'git://github.com/katakeynii/activerepository.git'
 ```
 
 And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install activerepository
 
 ## Usage
 
@@ -33,11 +37,36 @@ class BlogRepository < ActiveRepository::Base
         node :post,   "Blog::Post"
     end
     
+    # define class that fetch last node
+    def last_post
+        self.class.nodes.post
+    end
+
+
 end
 ```
+
+
+From Controller or Services 
+
+```ruby
+#  find first article
+ BlogRepository.nodes.post.find(1)
+
+ #find published articles
+ BlogRepository.nodes.post.where(published: true)
+
+ #Create a user
+ BlogRepository.nodes.user.create! firstname: "John", name: "Doe"
+```
+
+## TODOS
+  - Aggregate root implementation
+  - Query Builder based on Arel
+  - PL/SQL function caller
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
