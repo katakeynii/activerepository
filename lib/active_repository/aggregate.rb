@@ -14,7 +14,8 @@ module ActiveRepository
 
             def nodes
                 repository =  self.name.underscore.to_sym
-                @@nodes.set_repository(repository).registry
+                @@nodes.set_repository(repository)
+                @@nodes.registry
             end
             def aggregate &block
                 block.call if block_given?
