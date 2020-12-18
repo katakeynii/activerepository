@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "active_repository/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "activerepository"
+  spec.name          = "active_repository"
   spec.version       = ActiveRepository::VERSION
   spec.authors       = ["Mohamed Camara GUEYE"]
   spec.email         = ["katakeynii@gmail.com"]
