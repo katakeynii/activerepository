@@ -8,11 +8,16 @@ require "active_repository/aggregate"
 module ActiveRepository
 
   autoload :Aggregate, "active_repository/aggregate"
+  autoload :FnCaller, "active_repository/fn_caller"
   autoload :Base ,     "active_repository/base"
-  
+
   module Aggregate
     autoload :Nodes,           'active_repository/aggregate/nodes'
     autoload :NodeRegistry,    'active_repository/aggregate/node_registry'
+  end
+
+  module FnCaller 
+    autoload :PostgresFn, 'active_repository/fn_caller/postgres_fn'
   end
 
   class Error < StandardError; end
@@ -20,5 +25,6 @@ module ActiveRepository
 
 
   include ActiveRepository::Aggregate
+  include ActiveRepository::FnCaller
 
 end
