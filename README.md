@@ -29,20 +29,27 @@ And then execute:
 Actually I'm working the Rails generator so that you cant generate repositories same as you generate your models.
 But still you can create a directory `app/repositories` and put it all your futur repositories. Here we are going to create two repositories a Group Repository and a Blog Repository. A repository inherit from the ActiveRepository::Base class
 ```ruby
+
+# app/repositories/post_repository.rb 
+class PostRepository < ActiveRepository::Base
+    model :post,   "Blog::Post"
+    
+end
 # app/repositories/blog_repository.rb 
 class BlogRepository < ActiveRepository::Base
-
-    aggregate do 
-        node :user, "Blog::User"
-        node :post,   "Blog::Post"
-    end
+    model :user, "Blog::User"
+    model :post,   "Blog::Post"
     
     # define class that fetch last node
     def last_post
         self.class.nodes.post
     end
+end
 
-
+# app/repositories/comment_repository.rb 
+class PostRepository < ActiveRepository::Base
+    model :post,   "Blog::Comment"
+    
 end
 ```
 
