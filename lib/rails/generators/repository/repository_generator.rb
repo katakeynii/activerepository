@@ -3,7 +3,7 @@
 require 'rails/generators/named_base'
 require "rails/generators/active_record"
 
-module ActiveRepository
+module Rails
   module Generators
     class RepositoryGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
