@@ -1,9 +1,7 @@
 <% module_namespacing do -%>
 class <%= class_name %> < ApplicationRepository
-    aggregate do 
-
-    end 
-
-
+<% attributes.each do |attribute| -%>
+    model <%= attribute.name.to_sym %>, <%= attribute.type.classify %> 
+<% end -%>
 end
 <% end -%>

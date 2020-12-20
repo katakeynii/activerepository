@@ -7,8 +7,8 @@ module Rails
   module Generators
     class RepositoryGenerator < Rails::Generators::NamedBase
       include Rails::Generators::ResourceHelpers
-    #   argument :nodes, type: :array, default: [], banner: "node_name[:type] node_name[:type]"
-        source_root File.expand_path('templates', __dir__)
+      argument :nodes, type: :array, default: [], banner: "name[:model] name[:model]"
+      source_root File.expand_path('templates', __dir__)
       # creates the migration file for the model.
 
       def create_repository_file
