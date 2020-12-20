@@ -26,12 +26,19 @@ And then execute:
 
 ## Usage
 
-Actually I'm working the Rails generator so that you cant generate repositories same as you generate your models.
+You can generate repositories with  commands below :
+
+```bash
+  rails g repository post
+```
+```bash
+  rails g repository blog user:blog/user post:blog/post --aggregate
+```
 But still you can create a directory `app/repositories` and put it all your futur repositories. Here we are going to create two repositories a Group Repository and a Blog Repository. A repository inherit from the ActiveRepository::Base class
 ```ruby
 
 # app/repositories/post_repository.rb 
-class PostRepository < ActiveRepository::Base
+class Blog::PostRepository < ActiveRepository::Base
     model :post,   "Blog::Post"
     
 end
@@ -47,7 +54,7 @@ class BlogRepository < ActiveRepository::Base
 end
 
 # app/repositories/comment_repository.rb 
-class PostRepository < ActiveRepository::Base
+class Blog::CommentRepository < ActiveRepository::Base
     model :post,   "Blog::Comment"
     
 end
