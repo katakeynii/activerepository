@@ -12,7 +12,7 @@ module ActiveRepository
             def method_missing(method_name, schema = "public", *args)
                 fn_name = "#{schema}.#{method_name}"
                 query = self.class.build_query(fn_name, *args)
-                # self.class.exec_query(query)
+                self.class.exec_query(query)
             rescue ActiveRecord::StatementInvalid => e
                 puts e.inspect
             end
