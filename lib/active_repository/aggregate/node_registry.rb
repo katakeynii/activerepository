@@ -7,10 +7,19 @@ module ActiveRepository
             @repository = :all
             @registrations = {}
         end
-    
-        def register(name, target_klass, repository)
-            node = Item.new(name , target_klass )
+        
+        def has_root_item? 
+          registrations[repository]
+        end
+
+        def register(name, target_klass, root, repository)
+            node = Item.new(name , target_klass, root )
             registrations[repository] ||= []
+            if root.eql?(true)
+              root_item = find_root repository
+              raise MultipleRootError if !root_item.nil?
+            end
+
             registrations[repository] << node
 
             node
@@ -19,6 +28,11 @@ module ActiveRepository
         def set_repository(repository)
           @repository = repository 
           self
+        end
+
+        def find_root repository
+          item = @registrations[repository].find {|r| r.root === true}   
+          item.nil? ? nil : item.klass  
         end
 
         def find(node_name, repository)
@@ -34,16 +48,5 @@ module ActiveRepository
         private
       end
 
-      class Item
-        attr_reader :name, :klass 
-        def initialize(name, klass)
-          @name = name
-          @klass = Object.const_get(klass)
-          # @klass = klass
-        end
-        def method_missing(method_name, *args, &block)
-          @klass.send(method_name, *args, &block)
-        end
-      end
     end
 end
