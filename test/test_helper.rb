@@ -17,6 +17,12 @@ module TestSetup
       # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     end
 end
+
+
+ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
+
+load File.dirname(__FILE__) + '/schema.rb'
+
 class ActiveSupport::TestCase
     include TestSetup
 
@@ -27,12 +33,12 @@ class ActiveSupport::TestCase
 
     # ActiveRecord::Migration.check_pending!
 
-    # include ActiveRecord::TestFixtures
+    include ActiveRecord::TestFixtures
 
-    # ActiveRecord::FixtureSet.reset_cache
-    # fixtures_folder = File.join(File.dirname(__FILE__), 'fixtures')
-    # the_fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }
-    # ActiveRecord::FixtureSet.create_fixtures(fixtures_folder, the_fixtures)
+    ActiveRecord::FixtureSet.reset_cache
+    fixtures_folder = File.join(File.dirname(__FILE__), 'fixtures')
+    the_fixtures = Dir[File.join(fixtures_folder, '*.yml')].map {|f| File.basename(f, '.yml') }
+    ActiveRecord::FixtureSet.create_fixtures(fixtures_folder, the_fixtures)
     
     # self.fixture_path = File.join(File.dirname(__FILE__), 'fixtures')
     # self.use_instantiated_fixtures = false
