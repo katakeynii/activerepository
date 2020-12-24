@@ -14,8 +14,13 @@ module ActiveRepository
             def set_repository(repository)
                 @registry.set_repository(repository)
             end
-            def register(name, target_klass, repository)
-                @registry.register(name, target_klass, repository)
+
+            def find_root repository
+                @registry.find_root(repository)
+            end
+
+            def register(name, target_klass, root, repository)
+                @registry.register(name, target_klass, root, repository)
             end
         
             def find(node_name, repository) # :nodoc:
