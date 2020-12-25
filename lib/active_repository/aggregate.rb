@@ -6,6 +6,7 @@ module ActiveRepository
 
         extend ActiveSupport::Concern
         autoload :Nodes, 'active_repository/aggregate/nodes'
+        autoload :Item, 'active_repository/aggregate/item'
         autoload :NodeRegistry, 'active_repository/aggregate/node_registry'
         included do 
         end
@@ -22,15 +23,26 @@ module ActiveRepository
                 block.call if block_given?
             end
 
-            def node name, target
+            def root
                 repository =  self.name.underscore.to_sym
-                @@nodes.register(name, target, repository)
+                @@nodes.find_root(repository) 
             end
 
-            def model name, target
+            def node name, target, root: false
                 repository =  self.name.underscore.to_sym
-                @@nodes.register(name, target, repository)
+                @@nodes.register(name, target, root, repository)
             end
+
+            def model name, target, root: false
+                repository =  self.name.underscore.to_sym
+                @@nodes.register(name, target, root, repository)
+            end
+
+            def method_missing(method_name, *args, &block)
+                raise NoRootError if root.nil?
+                root.send(method_name, *args, &block)
+            end
+
         end
 
     end

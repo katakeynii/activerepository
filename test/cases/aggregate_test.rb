@@ -2,6 +2,7 @@ require 'repositories/blog_repository'
 require 'repositories/group_repository'
 require "minitest/autorun"
 require 'models/blog/post'
+require 'models/blog/group'
 require 'test_helper'
 
 class AggregateTest < ActiveSupport::TestCase
@@ -30,7 +31,7 @@ class AggregateTest < ActiveSupport::TestCase
 
       it "should add & return node item on node method" do 
         _(BlogRepository.respond_to?(:node)).must_equal true
-        assert_instance_of ActiveRepository::Aggregate::Item, BlogRepository.node(:alpha, "Blog::Comment")
+        assert_instance_of ActiveRepository::Aggregate::Item, BlogRepository.node(:alpha, "Blog::Comment", root: false)
       end
 
       it "should return node model instance" do 
@@ -45,6 +46,15 @@ class AggregateTest < ActiveSupport::TestCase
         # puts posts
       end
 
+      it "should query direct from root model" do 
+        assert_instance_of Blog::Group, GroupRepository.find(1)
+      end
+
+      it "should raise error on none root repository" do 
+        assert_raises ActiveRepository::NoRootError do 
+          BlogRepository.find(1)
+        end
+      end
     end
   end
 end
