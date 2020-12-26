@@ -8,7 +8,7 @@ require "rails/test_help"
 require 'coveralls'
 require 'simplecov'
 SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
-Coveralls.wear!
+# Coveralls.wear!
 SimpleCov.start
 
 
