@@ -7,7 +7,8 @@ require "rails_app/config/environment"
 require "rails/test_help"
 require 'coveralls'
 require 'simplecov'
-SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+# SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
+SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 # Coveralls.wear!
 SimpleCov.start
 
