@@ -3,7 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/katakeynii/activerepository/badge.svg?branch=master)](https://coveralls.io/github/katakeynii/activerepository?branch=master)
 [![Build Status](https://travis-ci.com/katakeynii/activerepository.svg?branch=master)](https://travis-ci.com/katakeynii/activerepository)
 [![Maintainability](https://api.codeclimate.com/v1/badges/96e7aafaabe28f14b871/maintainability)](https://codeclimate.com/github/katakeynii/activerepository/maintainability)
-
+[![Inline docs](http://inch-ci.org/github/katakeynii/activerepository.svg?branch=master)](http://inch-ci.org/github/katakeynii/activerepository)
 
 Welcome !! 
 This gem aim is to add repository patter over rails activerecord implementation. Our objectives are not create a replacement for rails ORM activerecord
