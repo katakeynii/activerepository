@@ -7,8 +7,10 @@ require "rails_app/config/environment"
 require "rails/test_help"
 require 'coveralls'
 require 'simplecov'
-SimpleCov.start
+SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 Coveralls.wear!
+SimpleCov.start
+
 
 # ActiveRecord::Base.legacy_connection_handling = false
 # ActiveRecord::Base.establish_connection :test

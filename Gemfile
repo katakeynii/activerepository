@@ -17,7 +17,7 @@ group :test do
   gem "mocha", "~> 1.1", require: false
   gem 'rubocop', '~> 0.68.1'
   gem 'rubocop-performance'
-  gem 'simplecov', '>= 0.9', require: false
+  gem 'simplecov',  '~> 0.20.0', require: false
   gem 'simplecov-lcov', require: false
   gem 'shrine', '~> 2.0'
   gem 'shrine-memory'

@@ -14,4 +14,5 @@ Gemfile.lock
 /gems
 /specifications
 /cache
-test/rails_app/logcoverage
+test/rails_app/log
+coverage
