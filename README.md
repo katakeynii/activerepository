@@ -1,6 +1,7 @@
 # Active Repository
 [![security](https://hakiri.io/github/katakeynii/activerepository/master.svg)](https://hakiri.io/github/katakeynii/activerepository/master)
 [![Coverage Status](https://coveralls.io/repos/github/katakeynii/activerepository/badge.svg?branch=master)](https://coveralls.io/github/katakeynii/activerepository?branch=master)
+[![Build Status](https://travis-ci.com/katakeynii/activerepository.svg?branch=master)](https://travis-ci.com/katakeynii/activerepository)
 
 
 Welcome !! 
