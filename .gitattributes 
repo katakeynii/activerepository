@@ -1,0 +1,7 @@
+
+*.rb diff=ruby
+*.gemspec diff=ruby
+
+*.css linguist-detectable=false
+*.html linguist-detectable=false
+*.ruby linguist-detectable=true
