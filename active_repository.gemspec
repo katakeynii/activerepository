@@ -43,7 +43,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activemodel", "~> 6.1"
   spec.add_dependency("orm_adapter", "~> 0.1")
   spec.add_dependency("bcrypt", "~> 3.0")
-  spec.add_dependency("railties", ">= 4.1.0")
+  spec.add_dependency("railties", ">= 6.1")
   spec.add_dependency("responders")
 
   spec.add_development_dependency "bundler"
