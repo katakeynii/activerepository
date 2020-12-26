@@ -3,9 +3,22 @@ welcome:
   user_id: 1
   title: Welcome to the RepoBlog
   content: Happy reading 
+  created_at: <%= (Date.today - 2).to_s %>
+  updated_at: <%= (Date.today - 2).to_s %>
 
 thinking:
   id: 2
   user_id: 1
   title: So I was thinking
   content: Like I hopefully always am
+  created_at: <%= (Date.today - 2).to_s %>
+  updated_at: <%= (Date.today - 2).to_s %>
+
+<% for i in 3..100 %> 
+item_<%=i%>:
+  id: <%= i %>
+  title: Post <%= "##{i}" %>  
+  content: Post<%= "##{i}" %> Content 
+  created_at: <%= (Date.today - 2).to_s %>
+  updated_at: <%= (Date.today - 2).to_s %>
+<% end %>

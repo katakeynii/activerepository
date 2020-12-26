@@ -6,7 +6,8 @@ ActiveRecord::Schema.define do
       t.string :name
       t.string :pseudo
       t.integer :age
-
+  
+      t.timestamps
     end
 
 
@@ -25,15 +26,34 @@ ActiveRecord::Schema.define do
         t.references :user
         t.references :group, null: true
     
+        t.timestamps
     end
 
-    create_table :comment, :force => true do |t|
+    create_table :comments, :force => true do |t|
         t.string :content
         t.datetime :publish_at
         t.references :user
         t.references :post
     
+        t.timestamps
     end
 
+
+    create_table :towns, :force => true do |t|
+        t.string :name
+    end
+
+    create_table :climat_quotidiens, :force => true do |t|
+        t.datetime :frame_date
+        t.float :temp_moy_c
+        t.float :temp_min_c
+        t.float :temp_max_c
+        t.float :temp_moy_f
+        t.float :temp_min_f
+        t.float :temp_max_f
+        t.float :precipitation
+        t.references :town
+
+    end
 
 end

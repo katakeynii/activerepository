@@ -8,12 +8,14 @@ class AggregateTest < ActiveSupport::TestCase
     describe ActiveRepository::QueryBuilder do
         it "must contain at least node" do
             qb = ActiveRepository::QueryBuilder::Query.new
+            qb2 = ActiveRepository::QueryBuilder::Query.new
+
+            puts qb2.fn("generate_series", "date '2020-11-01 00:00'", "date '2020-11-30 00:00'",  "'1 day'::interval").get_result
             # dd = qb.from("articles", "a")
-            puts qb.from("articles", "ar")
-            .select("title", "ar.content")
-            .where(
-                qb.ar[:title].eq("Bonjour")
-            ).to_sql
+        #     puts "=" * 50
+        #     puts qb.from("climat_quotidiens", "cq")
+        #     .select(qb.cq[:temp_moy_c], qb.cq[:frame_date])
+        #     .get_result
         end
     end
 

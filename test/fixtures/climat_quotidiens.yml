@@ -1,0 +1,29 @@
+<% ((Date.today - 90.days)..Date.today).to_a.each do |date| %>
+<% for i in 1..1440 %> 
+climat_quotidien_<%= i %>:
+  id: <%= i %>
+  frame_date:  <%= (date + 1.minute).to_s %>
+  temp_moy_c:  <%= rand(11.2...38.9) %>
+  temp_min_c:  <%= rand(11.2...38.9) %>
+  temp_max_c:  <%= rand(11.2...38.9) %>
+  temp_moy_f:  <%= rand(11.2...38.9) %>
+  temp_min_f:  <%= rand(11.2...38.9) %>
+  temp_max_f:  <%= rand(11.2...38.9) %>
+  precipitation: <%= rand(11.2...38.9) %>
+  town_id: 1
+<% end %>
+<% end %>
+
+
+
+# climat_quotidien:
+#   id: 1
+#   frame_date:  <%= (Date.today ).to_s %>
+#   temp_moy_c:  11.2
+#   temp_min_c:  11.2
+#   temp_max_c:  11.2
+#   temp_moy_f:  11.2
+#   temp_min_f:  11.2
+#   temp_max_f:  11.2
+#   precipitation: 11.2
+#   town_id: 1
