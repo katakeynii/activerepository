@@ -10,7 +10,9 @@ require 'simplecov'
 # SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 # Coveralls.wear!
-SimpleCov.start
+SimpleCov.start do 
+  add_filter "/test/"
+end
 
 
 # ActiveRecord::Base.legacy_connection_handling = false

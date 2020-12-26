@@ -11,7 +11,7 @@ before_install: gem install bundler -v 1.17.2
 
 # Run the test suites
 script:
-  - bundle exec rake                    # Backend specs
+  - bundle exec rake test                  
 
 # Pipe the coverage data to Code Climate
 after_script:
