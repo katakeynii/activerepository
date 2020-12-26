@@ -36,6 +36,11 @@ module ActiveRepository
                 self
             end
 
+            def get_result
+                connection = ActiveRecord::Base.connection
+                data = connection.select_all(@manager.to_sql ) 
+            end
+
             def to_sql
                 @manager.to_sql 
             end
@@ -45,10 +50,7 @@ module ActiveRepository
                 self
             end
             
-            def join join_type, to_table
 
-                self
-            end
             def from _from, _alias = nil
                 _alias ||= _from
                 @arel_table = Arel::Table.new(_from)
@@ -64,45 +66,14 @@ module ActiveRepository
                 self.class.attr_reader _alias.to_sym
             end
 
-            def function
-                query = Arel::Nodes::NamedFunction.new("#{options[:schema]}.api_get_#{method_name}", args_node).to_sql
+            def fn function_name, *args
+                args_node = args.map { |x| Arel.sql(x)}
+                query = Arel::Nodes::NamedFunction.new("#{function_name}", args_node)
+                @manager.project('*').from(query)
+                self
             end
 
-            # def join join, alias, condition_type, condition 
-            # end
 
-            # def inner_join join, alias, condition_type, condition 
-            # end
-
-            # def left_join join, alias, condition_type, condition 
-            # end
-
-            def and_where where
-            end
-            
-            def orWhere where
-            end
-
-            def groupBy groupBy
-            end
-        
-            def addGroupBy groupBy
-            end
-        
-            def having having
-            end
-        
-            def andHaving having
-            end
-        
-            def orHaving having
-            end
-        
-            def orderBy sort, order = nil
-            end
-        
-            def addOrderBy sort, order = nil
-            end
 
         end
     end

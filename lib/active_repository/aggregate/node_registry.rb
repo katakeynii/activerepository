@@ -19,8 +19,8 @@ module ActiveRepository
               root_item = find_root repository
               raise MultipleRootError if !root_item.nil?
             end
-
-            registrations[repository] << node
+            _node = find(name, repository)
+            registrations[repository] << node if _node.nil?
 
             node
         end
