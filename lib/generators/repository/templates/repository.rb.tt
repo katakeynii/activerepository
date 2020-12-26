@@ -1,7 +1,7 @@
 <% module_namespacing do -%>
 class <%= class_name %>Repository < ApplicationRepository
 <% unless @aggregate -%>
-    model :<%= class_name.split('::').last.underscore.to_sym %>, '<%= class_name %>' 
+    model :<%= class_name.split('::').last.underscore.to_sym %>, '<%= class_name %>' , root: true
 <% end -%>
 <% attributes.each do |attribute| -%>
     model :<%= attribute.name.to_sym %>, '<%= attribute.type.to_s.classify %>' 
