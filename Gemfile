@@ -11,6 +11,7 @@ gemspec
 gem "responders", "~> 3.0"
 
 group :test do
+  gem 'coveralls', require: false
   gem "timecop"
   gem "webrat", "0.7.3", require: false
   gem "mocha", "~> 1.1", require: false

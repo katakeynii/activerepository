@@ -1,6 +1,6 @@
 # Active Repository
 [![security](https://hakiri.io/github/katakeynii/activerepository/master.svg)](https://hakiri.io/github/katakeynii/activerepository/master)
-
+[![Coverage Status](https://coveralls.io/repos/github/katakeynii/activerepository/badge.svg?branch=master)](https://coveralls.io/github/katakeynii/activerepository?branch=master)
 Welcome !! 
 This gem aim is to add repository patter over rails activerecord implementation. Our objectives are not create a replacement for rails ORM activerecord
 ## You might ask why ? 
