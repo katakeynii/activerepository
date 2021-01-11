@@ -16,3 +16,4 @@ Gemfile.lock
 /cache
 test/rails_app/log
 coverage
+.DS_Store
